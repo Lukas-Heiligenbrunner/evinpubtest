@@ -35,7 +35,7 @@ jobs:
       - name: Build React App
         run: |
           cd portfolio
-          npm run build
+           PUBLIC_URL=https://lukas-heiligenbrunner.github.io/evinpubtest/ npm run build
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
