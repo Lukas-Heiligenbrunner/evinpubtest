@@ -1,0 +1,37 @@
+name: Build and Deploy React App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the public repository
+        uses: actions/checkout@v3
+
+      - name: Checkout the private submodule
+        run: |
+          git submodule init
+          git submodule update
+          git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          cd portfolio
+
+      - name: Install dependencies
+        run: |
+          cd portfolio # where private repo React app resides
+          npm install
+
+      - name: Build React App
+        run: |
+          cd portfolio
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: portfolio>/build
