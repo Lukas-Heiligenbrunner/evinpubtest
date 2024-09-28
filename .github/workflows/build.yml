@@ -23,7 +23,7 @@ jobs:
       - name: Checkout the private submodule
         run: |
           git submodule init
-          git submodule update
+          git submodule update --remote --merge
           git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
           cd portfolio
 
