@@ -36,7 +36,7 @@ jobs:
         run: cd portfolio/altflutter && flutter pub get
 
       - name: Build Web
-        run: cd portfolio/altflutter && flutter build web --base-href "/evinpubtest/" --release --wasm
+        run: cd portfolio/altflutter && flutter build web --base-href "/evinpubtest/" --release --web-renderer html
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
