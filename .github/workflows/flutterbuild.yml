@@ -30,7 +30,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'  # Adjust to your desired Flutter version
+          flutter-version: '3.24.5'  # Adjust to your desired Flutter version
 
       - name: Install Dependencies
         run: cd portfolio/altflutter && flutter pub get
